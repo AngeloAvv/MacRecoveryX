@@ -1,0 +1,43 @@
+name: macrecovery_x
+description: A tool to retrieve a genuine recovery image to recover your Mac.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 0.1.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  auto_route: ^3.2.2
+  collection: ^1.15.0
+  connectivity_plus: ^2.2.0
+  copy_with_extension: ^4.0.0
+  equatable: ^2.0.3
+  http: ^0.13.4
+  path: ^1.8.0
+  path_provider: ^2.0.8
+  url_launcher: ^6.0.18
+
+dev_dependencies:
+  auto_route_generator:
+  build_runner:
+  copy_with_extension_gen:
+  flutter_lints: ^1.0.0
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/os/lion.jpg
+    - assets/os/mountain_lion.png
+    - assets/os/mavericks.jpg
+    - assets/os/yosemite.png
+    - assets/os/el_capitan.jpg
+    - assets/os/sierra.jpg
+    - assets/os/high_sierra.jpg
+    - assets/os/mojave.jpg
+    - assets/os/catalina.jpg
+    - assets/os/big_sur.jpg
+    - assets/os/monterey.jpg

@@ -1,0 +1,19 @@
+{
+  "action_prev": "Indietro",
+  "action_next": "Avanti",
+  "action_start_over": "Ricomincia",
+  "action_use_this_folder": "Usa questa Cartella",
+  "label_welcome_title":"Benvenuto in MacRecoveryX",
+  "label_welcome_subtitle": "MacRecoveryX è uno strumento per scaricare un'immagine di ripristino genuina per ripristinare il tuo Mac",
+  "label_welcome_call_to_action": "Fatto con il ❤️ da AngeloAvv",
+  "label_no_internet_title": "Oh no!",
+  "label_no_internet_message": "Hai bisogno di una connessione a Internet per usare questo software",
+  "label_finish_title": "Processo completato!",
+  "label_finish_subtitle": "L'immagine di ripristino è stata scaricata con successo! I tuoi file sono disponibili qui: ",
+  "label_step": "Passo {step} di 2",
+  "step_one": "Benvenuto",
+  "step_two": "Scegli SO",
+  "step_three": "Destinazione",
+  "step_four": "Download",
+  "step_five": "Fine"
+}

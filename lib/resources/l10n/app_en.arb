@@ -1,0 +1,24 @@
+{
+  "action_prev": "Back",
+  "action_next": "Next",
+  "action_start_over": "Start Over",
+  "action_use_this_folder": "Use this Folder",
+  "label_welcome_title":"Welcome in MacRecoveryX",
+  "label_welcome_subtitle": "MacRecoveryX is a tool to retrieve a genuine recovery image to recover your Mac",
+  "label_welcome_call_to_action": "Made with ❤️ by AngeloAvv",
+  "label_no_internet_title": "Oh no!",
+  "label_no_internet_message": "You need an Internet connection to use this software",
+  "label_finish_title": "Process completed!",
+  "label_finish_subtitle": "The recovery image has been downloaded successfully! Your files are available under ",
+  "label_step": "Step {step} of 2",
+  "@label_step": {
+    "placeholders": {
+      "step": {}
+    }
+  },
+  "step_one": "Welcome",
+  "step_two": "OS Picker",
+  "step_three": "Destination",
+  "step_four": "Download",
+  "step_five": "Finish"
+}
