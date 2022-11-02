@@ -1,5 +1,7 @@
 # MacRecoveryX
 
+<img align="center" src="https://raw.githubusercontent.com/AngeloAvv/MacRecoveryX/master/assets/macrecovery.png" width="350" alt="MacRecoveryX screenshot" border="0">
+
 A tool to retrieve a genuine recovery image to recover your Mac.
 
 [![Flutter CI](https://github.com/AngeloAvv/MacRecoveryX/actions/workflows/main.yml/badge.svg)](https://github.com/AngeloAvv/MacRecoveryX/actions/workflows/main.yml)

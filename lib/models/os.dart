@@ -13,6 +13,7 @@ class OS extends Equatable {
     OS.catalina,
     OS.bigSur,
     OS.monterey,
+    OS.ventura,
   ];
 
   final String name;
@@ -114,6 +115,14 @@ class OS extends Equatable {
         version: '12',
         avatar: 'assets/os/monterey.jpg',
         boardId: 'Mac-E43C1C25D4880AD6',
+        mlb: '00000000000000000',
+      );
+
+  factory OS.ventura() => const OS(
+        name: 'Ventura',
+        version: '13',
+        avatar: 'assets/os/ventura.jpg',
+        boardId: 'Mac-B4831CEBD52A0C4C',
         mlb: '00000000000000000',
       );
 
