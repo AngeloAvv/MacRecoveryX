@@ -40,6 +40,7 @@ class RecoveryRepository {
     }
 
     await file.create();
+    final fileSink = file.openWrite();
 
     final response = await service.requestFile(url: url, session: session);
 
@@ -50,8 +51,7 @@ class RecoveryRepository {
       StreamTransformer<List<int>, DownloadStatus>.fromHandlers(
           handleData: (bytes, sink) {
         downloadedLength += bytes.length;
-
-        file.writeAsBytes(bytes, mode: FileMode.append);
+        fileSink.add(bytes);
 
         sink.add(
           DownloadStatus(

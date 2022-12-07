@@ -40,11 +40,11 @@ class OSItem extends StatelessWidget {
 
   Widget _image(BuildContext context) => Expanded(
         child: ClipRRect(
-          child: Image.asset(os.avatar, width: 300, fit: BoxFit.cover),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
           ),
+          child: Image.asset(os.avatar, width: 300, fit: BoxFit.cover),
         ),
       );
 

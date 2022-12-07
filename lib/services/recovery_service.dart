@@ -103,7 +103,7 @@ os=default
 
     for (var k in infoRequired) {
       if (!info.containsKey(k)) {
-        throw Exception('Missing key ' + k);
+        throw Exception('Missing key $k');
       }
     }
 

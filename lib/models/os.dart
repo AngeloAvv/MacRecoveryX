@@ -1,6 +1,9 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class OS extends Equatable {
+part 'os.freezed.dart';
+
+@freezed
+class OS with _$OS {
   static const values = [
     OS.lion,
     OS.mountainLion,
@@ -16,19 +19,13 @@ class OS extends Equatable {
     OS.ventura,
   ];
 
-  final String name;
-  final String version;
-  final String avatar;
-  final String boardId;
-  final String mlb;
-
-  const OS({
-    required this.name,
-    required this.version,
-    required this.avatar,
-    required this.boardId,
-    required this.mlb,
-  });
+  const factory OS({
+    required String name,
+    required String version,
+    required String avatar,
+    required String boardId,
+    required String mlb,
+  }) = _OS;
 
   factory OS.lion() => const OS(
         name: 'Lion',
@@ -122,16 +119,7 @@ class OS extends Equatable {
         name: 'Ventura',
         version: '13',
         avatar: 'assets/os/ventura.jpg',
-        boardId: 'Mac-B4831CEBD52A0C4C',
+        boardId: 'Mac-7BA5B2D9E42DDD94',
         mlb: '00000000000000000',
       );
-
-  @override
-  List<Object?> get props => [
-        name,
-        version,
-        avatar,
-        boardId,
-        mlb,
-      ];
 }

@@ -3,12 +3,15 @@ import 'package:macrecovery_x/models/step.dart' as models;
 
 class StepItem extends StatelessWidget {
   final models.Step step;
-  final models.Step current;
+  final bool current;
 
-  const StepItem({
+  final bool done;
+
+  const StepItem(
+    this.step, {
     Key? key,
-    required this.step,
-    required this.current,
+    this.current = false,
+    this.done = false,
   }) : super(key: key);
 
   @override
@@ -25,23 +28,23 @@ class StepItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: _this || _passed
+                    color: current || done
                         ? Theme.of(context).primaryColor
                         : Theme.of(context).colorScheme.secondary,
                   ),
-                  color: _this
+                  color: current
                       ? Theme.of(context).primaryColor
-                      : _passed
+                      : done
                           ? Colors.white
                           : Theme.of(context).colorScheme.secondary,
                 ),
                 child: Center(
                   child: Text(
-                    step.number.toString(),
+                    (step.index + 1).toString(),
                     style: Theme.of(context).textTheme.headline6?.copyWith(
                           fontWeight:
-                              _this ? FontWeight.bold : FontWeight.normal,
-                          color: _passed
+                              current ? FontWeight.bold : FontWeight.normal,
+                          color: done
                               ? Theme.of(context).primaryColor
                               : Colors.white,
                         ),
@@ -54,15 +57,11 @@ class StepItem extends StatelessWidget {
               child: Text(
                 step.label(context) ?? '',
                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                      fontWeight: _this ? FontWeight.bold : FontWeight.normal,
+                      fontWeight: current ? FontWeight.bold : FontWeight.normal,
                     ),
               ),
             ),
           ],
         ),
       );
-
-  bool get _this => step == current;
-
-  bool get _passed => current < step;
 }

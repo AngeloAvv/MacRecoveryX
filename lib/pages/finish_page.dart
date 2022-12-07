@@ -17,45 +17,40 @@ class FinishPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _finishTitle(context),
-          _finishSubtitle(context),
-          _startOverButton(context),
-        ],
-      );
-
-  Widget _finishTitle(BuildContext context) => Text(
-        AppLocalizations.of(context)?.label_finish_title ?? '',
-        style: Theme.of(context).textTheme.headline4?.copyWith(
-              color: Colors.black,
-            ),
-      );
-
-  Widget _finishSubtitle(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.headline6,
-            text: AppLocalizations.of(context)?.label_finish_subtitle ?? '',
-            children: [
-              TextSpan(
-                text: directory.path,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+          Text(
+            AppLocalizations.of(context)?.label_finish_title ?? '',
+            style: Theme.of(context).textTheme.headline4?.copyWith(
+                  color: Colors.black,
                 ),
-              ),
-            ],
           ),
-        ),
-      );
-
-  Widget _startOverButton(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 64.0),
-        child: ElevatedButton(
-          onPressed: () {
-            context.router.navigate(const WelcomeRoute());
-            context.read<StepCubit>().init();
-          },
-          child: Text(AppLocalizations.of(context)?.action_start_over ?? ''),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.headline6,
+                text: AppLocalizations.of(context)?.label_finish_subtitle ?? '',
+                children: [
+                  TextSpan(
+                    text: directory.path,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 64.0),
+            child: ElevatedButton(
+              onPressed: () {
+                context.router.navigate(const WelcomeRoute());
+                context.read<StepCubit>().init();
+              },
+              child:
+                  Text(AppLocalizations.of(context)?.action_start_over ?? ''),
+            ),
+          ),
+        ],
       );
 }

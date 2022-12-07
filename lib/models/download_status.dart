@@ -1,22 +1,14 @@
 import 'dart:io';
 
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class DownloadStatus extends Equatable {
-  final double progress;
-  final bool completed;
-  final File file;
+part 'download_status.freezed.dart';
 
-  const DownloadStatus({
-    required this.progress,
-    required this.file,
-    this.completed = false,
-  });
-
-  @override
-  List<Object?> get props => [
-        progress,
-        completed,
-        file,
-      ];
+@freezed
+class DownloadStatus with _$DownloadStatus {
+  const factory DownloadStatus({
+    required double progress,
+    required File file,
+    @Default(false) bool completed,
+  }) = _DownloadStatus;
 }

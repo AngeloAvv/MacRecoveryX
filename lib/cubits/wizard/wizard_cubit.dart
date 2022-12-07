@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:macrecovery_x/models/os.dart';
 
-part 'wizard_cubit.g.dart';
+part 'wizard_cubit.freezed.dart';
 part 'wizard_state.dart';
 
 class WizardCubit extends Cubit<WizardState> {

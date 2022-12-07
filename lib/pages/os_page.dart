@@ -24,7 +24,27 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
         builder: (context, selectedOS) => Column(
           children: [
             _body(context, selectedOS: selectedOS),
-            _navigationButtons(context, selectedOS: selectedOS),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    context.router.navigate(const WelcomeRoute());
+                    context.read<StepCubit>().prev();
+                  },
+                  child: Text(AppLocalizations.of(context)?.action_prev ?? ''),
+                ),
+                ElevatedButton(
+                  onPressed: selectedOS != null
+                      ? () {
+                          context.router.navigate(const FolderRoute());
+                          context.read<StepCubit>().next();
+                        }
+                      : null,
+                  child: Text(AppLocalizations.of(context)?.action_next ?? ''),
+                ),
+              ],
+            ),
           ],
         ),
       );
@@ -49,7 +69,7 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Scrollbar(
-          isAlwaysShown: true,
+          thumbVisibility: true,
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(vertical: 16),
             scrollDirection: Axis.horizontal,
@@ -61,30 +81,4 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
       ),
     );
   }
-
-  Widget _navigationButtons(
-    BuildContext context, {
-    required OS? selectedOS,
-  }) =>
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          OutlinedButton(
-            onPressed: () {
-              context.router.navigate(const WelcomeRoute());
-              context.read<StepCubit>().prev();
-            },
-            child: Text(AppLocalizations.of(context)?.action_prev ?? ''),
-          ),
-          ElevatedButton(
-            onPressed: selectedOS != null
-                ? () {
-                    context.router.navigate(const FolderRoute());
-                    context.read<StepCubit>().next();
-                  }
-                : null,
-            child: Text(AppLocalizations.of(context)?.action_next ?? ''),
-          ),
-        ],
-      );
 }
