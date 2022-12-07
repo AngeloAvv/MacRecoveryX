@@ -1,15 +1,9 @@
 part of 'wizard_cubit.dart';
 
-@CopyWith()
-class WizardState extends Equatable {
-  final OS? os;
-  final Directory? destination;
-
-  const WizardState({
-    this.os,
-    this.destination,
-  });
-
-  @override
-  List<Object?> get props => [os, destination];
+@freezed
+class WizardState with _$WizardState {
+  const factory WizardState({
+    OS? os,
+    Directory? destination,
+  }) = _WizardState;
 }

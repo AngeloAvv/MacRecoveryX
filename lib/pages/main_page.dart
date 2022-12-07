@@ -40,8 +40,9 @@ class MainPage extends StatelessWidget {
             children: models.Step.values
                 .map(
                   (step) => StepItem(
-                    step: step.call(),
-                    current: currentStep,
+                    step,
+                    current: step == currentStep,
+                    done: currentStep < step,
                   ),
                 )
                 .toList(growable: false),

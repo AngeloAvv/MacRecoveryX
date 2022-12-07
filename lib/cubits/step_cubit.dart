@@ -2,19 +2,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macrecovery_x/models/step.dart';
 
 class StepCubit extends Cubit<Step> {
-  StepCubit() : super(Step.welcome());
+  StepCubit() : super(Step.welcome);
 
-  void init() => emit(Step.welcome());
+  void init() => emit(Step.welcome);
 
   void next() {
-    final currentIndex = state.number;
-    final step = Step.values[currentIndex].call();
-    emit(step);
+    final index = state.index + 1;
+
+    if (index < Step.values.length) {
+      emit(Step.values[index]);
+    }
   }
 
   void prev() {
-    final currentIndex = state.number;
-    final step = Step.values[currentIndex - 2].call();
-    emit(step);
+    final index = state.index - 1;
+
+    if (index >= 0) {
+      emit(Step.values[index]);
+    }
   }
 }
