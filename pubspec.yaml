@@ -11,7 +11,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_bloc: ^8.1.1
-  auto_route: ^5.0.4
+  auto_route: ^6.0.0
   collection: ^1.16.0
   connectivity_plus: ^3.0.2
   http: ^0.13.5
