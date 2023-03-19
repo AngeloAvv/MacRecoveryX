@@ -23,7 +23,7 @@ dependencies:
   rxdart: ^0.27.7
 
 dev_dependencies:
-  auto_route_generator: ^5.0.3
+  auto_route_generator: ^6.0.0
   build_runner: ^2.3.2
   flutter_lints: ^2.0.1
   freezed: ^2.3.1
