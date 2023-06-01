@@ -14,7 +14,7 @@ dependencies:
   auto_route: ^5.0.4
   collection: ^1.16.0
   connectivity_plus: ^3.0.2
-  http: ^0.13.5
+  http: ^1.0.0
   path: ^1.8.2
   path_provider: ^2.0.11
   url_launcher: ^6.1.7
