@@ -13,7 +13,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   auto_route: ^5.0.4
   collection: ^1.16.0
-  connectivity_plus: ^3.0.2
+  connectivity_plus: ^5.0.0
   http: ^0.13.5
   path: ^1.8.2
   path_provider: ^2.0.11
