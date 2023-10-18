@@ -25,7 +25,7 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.2
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.0
   freezed: ^2.3.1
 flutter:
   generate: true
