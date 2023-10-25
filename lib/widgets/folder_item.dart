@@ -9,9 +9,9 @@ class FolderItem extends StatelessWidget {
 
   const FolderItem(
     this.directory, {
-    Key? key,
+    super.key,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => InkWell(

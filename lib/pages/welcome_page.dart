@@ -2,12 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
-import 'package:macrecovery_x/router/app_router.gr.dart';
+import 'package:macrecovery_x/router/app_router.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+@RoutePage()
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) => Column(
@@ -18,8 +19,8 @@ class WelcomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  AppLocalizations.of(context)?.label_welcome_title ?? '',
-                  style: Theme.of(context).textTheme.headline4?.copyWith(
+                  AppLocalizations.of(context)?.label_welcome_title ?? 'label_welcome_title',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: Colors.black,
                       ),
                 ),
@@ -27,7 +28,7 @@ class WelcomePage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                       AppLocalizations.of(context)?.label_welcome_subtitle ??
-                          ''),
+                          'label_welcome_subtitle'),
                 ),
                 InkWell(
                   onTap: () async =>
@@ -35,8 +36,8 @@ class WelcomePage extends StatelessWidget {
                   child: Text(
                     AppLocalizations.of(context)
                             ?.label_welcome_call_to_action ??
-                        '',
-                    style: Theme.of(context).textTheme.caption?.copyWith(
+                        'label_welcome_call_to_action',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.red,
                         ),
                   ),
@@ -49,10 +50,10 @@ class WelcomePage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  context.router.navigate(const OSRoute());
+                  context.router.navigate(OSRoute());
                   context.read<StepCubit>().next();
                 },
-                child: Text(AppLocalizations.of(context)?.action_next ?? ''),
+                child: Text(AppLocalizations.of(context)?.action_next ?? 'action_next'),
               ),
             ],
           ),

@@ -9,10 +9,10 @@ class StepItem extends StatelessWidget {
 
   const StepItem(
     this.step, {
-    Key? key,
+    super.key,
     this.current = false,
     this.done = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -41,7 +41,7 @@ class StepItem extends StatelessWidget {
                 child: Center(
                   child: Text(
                     (step.index + 1).toString(),
-                    style: Theme.of(context).textTheme.headline6?.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight:
                               current ? FontWeight.bold : FontWeight.normal,
                           color: done
@@ -56,7 +56,7 @@ class StepItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16.0),
               child: Text(
                 step.label(context) ?? '',
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: current ? FontWeight.bold : FontWeight.normal,
                     ),
               ),

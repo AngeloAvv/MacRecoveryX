@@ -5,17 +5,18 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:macrecovery_x/cubits/folders/folders_cubit.dart';
 import 'package:macrecovery_x/cubits/folder_cubit.dart';
+import 'package:macrecovery_x/cubits/folders/folders_cubit.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
 import 'package:macrecovery_x/cubits/wizard/wizard_cubit.dart';
 import 'package:macrecovery_x/extensions/directory_extensions.dart';
-import 'package:macrecovery_x/router/app_router.gr.dart';
+import 'package:macrecovery_x/router/app_router.dart';
 import 'package:macrecovery_x/widgets/folder_item.dart';
 import 'package:macrecovery_x/widgets/loading_widget.dart';
 
-class FolderPage extends StatelessWidget with AutoRouteWrapper {
-  const FolderPage({Key? key}) : super(key: key);
+@RoutePage()
+class FolderPage extends StatelessWidget implements AutoRouteWrapper {
+  const FolderPage({super.key});
 
   @override
   Widget wrappedRoute(BuildContext context) => MultiBlocProvider(
@@ -65,10 +66,11 @@ class FolderPage extends StatelessWidget with AutoRouteWrapper {
               children: [
                 OutlinedButton(
                   onPressed: () {
-                    context.router.navigate(const OSRoute());
+                    context.router.navigate(OSRoute());
                     context.read<StepCubit>().prev();
                   },
-                  child: Text(AppLocalizations.of(context)?.action_prev ?? ''),
+                  child: Text(AppLocalizations.of(context)?.action_prev ??
+                      'action_prev'),
                 ),
                 ElevatedButton(
                   onPressed: selectedDirectory != null
@@ -87,7 +89,7 @@ class FolderPage extends StatelessWidget with AutoRouteWrapper {
                       : null,
                   child: Text(
                       AppLocalizations.of(context)?.action_use_this_folder ??
-                          ''),
+                          'action_use_this_folder'),
                 ),
               ],
             ),
@@ -99,7 +101,7 @@ class FolderPage extends StatelessWidget with AutoRouteWrapper {
 class CurrentDirectory extends StatelessWidget {
   final List<Directory> directories;
 
-  const CurrentDirectory(this.directories, {Key? key}) : super(key: key);
+  const CurrentDirectory(this.directories, {super.key});
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -138,13 +140,16 @@ class CurrentDirectory extends StatelessWidget {
 
 class FoldersTree extends StatelessWidget {
   final List<Directory> folders;
+  final _scrollController = ScrollController();
 
-  const FoldersTree(this.folders, {Key? key}) : super(key: key);
+  FoldersTree(this.folders, {super.key});
 
   @override
   Widget build(BuildContext context) => Scrollbar(
+        controller: _scrollController,
         thumbVisibility: true,
         child: SingleChildScrollView(
+          controller: _scrollController,
           padding: const EdgeInsets.symmetric(
             vertical: 16,
             horizontal: 8,
