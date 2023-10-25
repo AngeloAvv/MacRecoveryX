@@ -17,6 +17,7 @@ class OS with _$OS {
     OS.bigSur,
     OS.monterey,
     OS.ventura,
+    OS.sonoma,
   ];
 
   const factory OS({
@@ -119,6 +120,14 @@ class OS with _$OS {
         name: 'Ventura',
         version: '13',
         avatar: 'assets/os/ventura.jpg',
+        boardId: 'Mac-B4831CEBD52A0C4C',
+        mlb: '00000000000000000',
+      );
+
+  factory OS.sonoma() => const OS(
+        name: 'Sonoma',
+        version: '14',
+        avatar: 'assets/os/sonoma.jpg',
         boardId: 'Mac-7BA5B2D9E42DDD94',
         mlb: '00000000000000000',
       );

@@ -7,46 +7,51 @@ import 'package:macrecovery_x/cubits/step_cubit.dart';
 import 'package:macrecovery_x/models/step.dart' as models;
 import 'package:macrecovery_x/widgets/step_item.dart';
 
+@RoutePage()
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) =>
+      Scaffold(
         body: _connectivityChecker(context),
       );
 
-  Widget _body(BuildContext context) => Container(
+  Widget _body(BuildContext context) =>
+      Container(
         color: Colors.white,
         padding: const EdgeInsets.all(32),
         child: BlocBuilder<StepCubit, models.Step>(
-          builder: (context, currentStep) => Column(
-            children: [
-              _progress(currentStep),
-              _currentStep(),
-            ],
-          ),
-        ),
-      );
-
-  Widget _progress(models.Step currentStep) => Card(
-        color: Colors.grey[100],
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: models.Step.values
-                .map(
-                  (step) => StepItem(
-                    step,
-                    current: step == currentStep,
-                    done: currentStep < step,
+          builder: (context, currentStep) =>
+              Column(
+                children: [
+                  Card(
+                    color: Colors.grey[100],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: models.Step.values
+                            .map(
+                              (step) =>
+                              StepItem(
+                                step,
+                                current: step == currentStep,
+                                done: currentStep < step,
+                              ),
+                        )
+                            .toList(growable: false),
+                      ),
+                    ),
                   ),
-                )
-                .toList(growable: false),
-          ),
+                  const Expanded(
+                      child: AutoRouter()
+                  ),
+                ],
+              ),
         ),
       );
 
@@ -66,24 +71,31 @@ class MainPage extends StatelessWidget {
         },
       );
 
-  Widget _noConnection(BuildContext context) => Center(
+  Widget _noConnection(BuildContext context) =>
+      Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(Icons.wifi_off, size: 256, color: Colors.grey),
             Text(
-              AppLocalizations.of(context)?.label_no_internet_title ?? '',
-              style: Theme.of(context).textTheme.headline4,
+              AppLocalizations
+                  .of(context)
+                  ?.label_no_internet_title ?? 'label_no_internet_title',
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headlineMedium,
             ),
             Text(
-              AppLocalizations.of(context)?.label_no_internet_message ?? '',
-              style: Theme.of(context).textTheme.headline6,
+              AppLocalizations
+                  .of(context)
+                  ?.label_no_internet_message ?? 'label_no_internet_message',
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .titleLarge,
             ),
           ],
         ),
-      );
-
-  Widget _currentStep() => const Expanded(
-        child: AutoRouter(),
       );
 }

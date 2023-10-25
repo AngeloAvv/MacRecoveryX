@@ -5,11 +5,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/cubits/os_cubit.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
 import 'package:macrecovery_x/models/os.dart';
-import 'package:macrecovery_x/router/app_router.gr.dart';
+import 'package:macrecovery_x/router/app_router.dart';
 import 'package:macrecovery_x/widgets/os_item.dart';
 
-class OSPage extends StatelessWidget with AutoRouteWrapper {
-  const OSPage({Key? key}) : super(key: key);
+@RoutePage()
+class OSPage extends StatelessWidget implements AutoRouteWrapper {
+  final _scrollController = ScrollController();
+
+  OSPage({super.key});
 
   @override
   Widget wrappedRoute(BuildContext context) => BlocProvider(
@@ -32,7 +35,7 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
                     context.router.navigate(const WelcomeRoute());
                     context.read<StepCubit>().prev();
                   },
-                  child: Text(AppLocalizations.of(context)?.action_prev ?? ''),
+                  child: Text(AppLocalizations.of(context)?.action_prev ?? 'action_prev'),
                 ),
                 ElevatedButton(
                   onPressed: selectedOS != null
@@ -41,7 +44,7 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
                           context.read<StepCubit>().next();
                         }
                       : null,
-                  child: Text(AppLocalizations.of(context)?.action_next ?? ''),
+                  child: Text(AppLocalizations.of(context)?.action_next ?? 'action_next'),
                 ),
               ],
             ),
@@ -69,8 +72,10 @@ class OSPage extends StatelessWidget with AutoRouteWrapper {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Scrollbar(
+          controller: _scrollController,
           thumbVisibility: true,
           child: ListView.separated(
+            controller: _scrollController,
             padding: const EdgeInsets.symmetric(vertical: 16),
             scrollDirection: Axis.horizontal,
             itemBuilder: (_, index) => widgets[index],

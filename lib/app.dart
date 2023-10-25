@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/di/dependency_injector.dart';
 import 'package:macrecovery_x/misc/custom_scroll_behavior.dart';
-import 'package:macrecovery_x/router/app_router.gr.dart';
+import 'package:macrecovery_x/router/app_router.dart';
 
 class App extends StatelessWidget {
   final _router = AppRouter();
 
-  App({Key? key}) : super(key: key);
+  App({super.key});
 
   @override
   Widget build(BuildContext context) => DependencyInjector(
         child: MaterialApp.router(
-          title: 'Flutter Demo',
+          title: 'Macrecovery X',
           scrollBehavior: CustomScrollBehavior(),
           debugShowCheckedModeBanner: false,
           routerDelegate: _router.delegate(),
@@ -27,7 +27,7 @@ class App extends StatelessWidget {
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.titleLarge,
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                 shape: RoundedRectangleBorder(
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                textStyle: Theme.of(context).textTheme.headline6,
+                textStyle: Theme.of(context).textTheme.titleLarge,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100),
                 ),

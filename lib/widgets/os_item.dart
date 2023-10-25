@@ -8,10 +8,10 @@ class OSItem extends StatelessWidget {
 
   const OSItem(
     this.os, {
-    Key? key,
+    super.key,
     this.selected = false,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => Card(
@@ -72,12 +72,12 @@ class OSItem extends StatelessWidget {
         os.name,
         style: Theme.of(context)
             .textTheme
-            .headline5
+            .headlineSmall
             ?.copyWith(color: Colors.black),
       );
 
   Widget _subtitle(BuildContext context) => Text(
         os.version,
-        style: Theme.of(context).textTheme.headline6,
+        style: Theme.of(context).textTheme.titleLarge,
       );
 }

@@ -7,17 +7,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macrecovery_x/cubits/download/download_cubit.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
 import 'package:macrecovery_x/models/os.dart';
-import 'package:macrecovery_x/router/app_router.gr.dart';
+import 'package:macrecovery_x/router/app_router.dart';
 
-class DownloadPage extends StatelessWidget with AutoRouteWrapper {
+@RoutePage()
+class DownloadPage extends StatelessWidget implements AutoRouteWrapper {
   final OS os;
   final Directory destination;
 
   const DownloadPage({
     required this.os,
     required this.destination,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget wrappedRoute(BuildContext context) => BlocProvider(
@@ -43,7 +44,7 @@ class DownloadPage extends StatelessWidget with AutoRouteWrapper {
               children: [
                 Text(
                   '${min(progress * 100, 100).toInt()} %',
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(
                   width: 256,

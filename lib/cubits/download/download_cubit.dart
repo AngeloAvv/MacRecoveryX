@@ -9,7 +9,6 @@ import 'package:macrecovery_x/services/recovery_service.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'download_cubit.freezed.dart';
-
 part 'download_state.dart';
 
 class DownloadCubit extends Cubit<DownloadState> {
