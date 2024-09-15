@@ -56,11 +56,11 @@ class MainPage extends StatelessWidget {
       );
 
   Widget _connectivityChecker(BuildContext context) =>
-      StreamBuilder<ConnectivityResult>(
+      StreamBuilder<List<ConnectivityResult>>(
         stream: Connectivity().onConnectivityChanged,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data != ConnectivityResult.none) {
+            if (!snapshot.data!.contains(ConnectivityResult.none)) {
               return _body(context);
             } else {
               return _noConnection(context);
