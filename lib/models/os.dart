@@ -18,6 +18,7 @@ class OS with _$OS {
     OS.monterey,
     OS.ventura,
     OS.sonoma,
+    OS.sequoia,
   ];
 
   const factory OS({
@@ -128,6 +129,14 @@ class OS with _$OS {
         name: 'Sonoma',
         version: '14',
         avatar: 'assets/os/sonoma.jpg',
+        boardId: 'Mac-827FAC58A8FDFA22',
+        mlb: '00000000000000000',
+      );
+
+  factory OS.sequoia() => const OS(
+        name: 'Sequoia',
+        version: '15',
+        avatar: 'assets/os/sequoia.png',
         boardId: 'Mac-7BA5B2D9E42DDD94',
         mlb: '00000000000000000',
       );
