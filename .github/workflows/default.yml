@@ -28,3 +28,5 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     name: Release
     uses: ./.github/workflows/release.yml
+    with:
+      platform: ${{ matrix.platform }}
