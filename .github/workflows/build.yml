@@ -21,14 +21,21 @@ jobs:
       - name: Build Artifacts
         working-directory: ${{ inputs.platform }}
         run: flutter build ${{ inputs.platform }} --release
+      - name: Rename ref name
+        uses: mad9000/actions-find-and-replace-string@2
+        id: version
+        with:
+          source: ${{ github.ref_name }}
+          find: '/'
+          replace: '-'
       - name: Archive Artifacts
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
+          filename: MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip
           directory: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.platform }}-artifacts
-          path: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
+          path: MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip

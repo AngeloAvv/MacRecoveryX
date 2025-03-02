@@ -13,14 +13,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Rename ref name
+        uses: mad9000/actions-find-and-replace-string@2
+        id: version
+        with:
+          source: ${{ github.ref_name }}
+          find: '/'
+          replace: '-'
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.platform }}-artifacts
-          path: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
+          path: MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip
       - name: Artifacts Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
+          files: MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip
