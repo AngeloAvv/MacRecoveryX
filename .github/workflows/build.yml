@@ -25,10 +25,10 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: MacRecoveryX-${{github.ref_name}}-${{inputs.platform}}.zip
+          filename: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
           directory: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.platform }}-artifacts
-          path: MacRecoveryX-${{github.ref_name}}-${{inputs.platform}}.zip
+          path: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip

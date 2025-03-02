@@ -17,10 +17,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.platform }}-artifacts
-          path: MacRecoveryX-${{github.ref_name}}-${{inputs.platform}}.zip
+          path: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
       - name: Artifacts Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: MacRecoveryX-${{github.ref_name}}-${{inputs.platform}}.zip
+          files: MacRecoveryX-${{ github.ref_name.replace('/', '-') }}-${{inputs.platform}}.zip
