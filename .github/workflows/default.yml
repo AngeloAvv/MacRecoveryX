@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/analyze.yml
 
   build:
-    name: Build (${{ matrix.platform }}|${{ matrix.working-directory }}|${{ matrix.flavor }}|flavorize:${{ matrix.flavorize }})
+    name: Build ${{ matrix.platform }}
     needs:
       - analyze
     strategy:
@@ -23,10 +23,10 @@ jobs:
       platform: ${{ matrix.platform }}
 
   release:
+    name: Release ${{ matrix.platform }}
     needs:
       - build
     if: startsWith(github.ref, 'refs/tags/')
-    name: Release
     uses: ./.github/workflows/release.yml
     with:
       platform: ${{ matrix.platform }}
