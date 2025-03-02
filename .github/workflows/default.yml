@@ -1,0 +1,35 @@
+name: Pipeline
+
+on: push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Testing
+    uses: ./.github/workflows/analyze.yml
+
+  build:
+    name: Build ${{ matrix.platform }}
+    needs:
+      - analyze
+    strategy:
+      matrix:
+        platform: [ linux, windows, macos ]
+    uses: ./.github/workflows/build.yml
+    with:
+      platform: ${{ matrix.platform }}
+
+  release:
+    name: Release ${{ matrix.platform }}
+    needs:
+      - build
+    strategy:
+      matrix:
+        platform: [ linux, windows, macos ]
+    if: startsWith(github.ref, 'refs/tags/')
+    uses: ./.github/workflows/release.yml
+    with:
+      platform: ${{ matrix.platform }}

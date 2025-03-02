@@ -1,0 +1,28 @@
+name: Build Artifacts
+
+on:
+  workflow_call:
+    inputs:
+      platform:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ${{ inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'windows' && 'windows-latest' || inputs.platform == 'macos' && 'macos-latest' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        if: ${{ inputs.platform == 'linux' }}
+        run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-0 libgtk-3-dev libblkid1 liblzma5
+      - name: Setup Flutter
+        uses: ./.github/actions/setup
+      - name: Build Artifacts
+        working-directory: ${{ inputs.platform }}
+        run: flutter build ${{ inputs.platform }} --release
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.platform }}-artifacts
+          path: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
