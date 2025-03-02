@@ -28,14 +28,8 @@ jobs:
           source: ${{ github.ref_name }}
           find: '/'
           replace: '-'
-      - name: Archive Artifacts
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          filename: MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip
-          directory: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.platform }}-artifacts
-          path: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}/MacRecoveryX-${{ steps.version.outputs.value }}-${{inputs.platform}}.zip
+          path: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
