@@ -19,7 +19,7 @@ dependencies:
   path_provider: ^2.1.1
   url_launcher: ^6.2.0
   provider: ^6.0.5
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^3.0.0
   rxdart: ^0.28.0
   pine: ^1.0.2
 
