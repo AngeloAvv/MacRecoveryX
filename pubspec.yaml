@@ -24,10 +24,10 @@ dependencies:
   url_launcher: ^6.2.0
 
 dev_dependencies:
-  auto_route_generator: ^9.0.0
+  auto_route_generator:
   build_runner: ^2.4.6
   flutter_lints: ^5.0.0
-  freezed: ^3.0.0
+  freezed:
 
 flutter:
   generate: true
