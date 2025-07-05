@@ -4,12 +4,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/cubits/folder_cubit.dart';
 import 'package:macrecovery_x/cubits/folders/folders_cubit.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
 import 'package:macrecovery_x/cubits/wizard/wizard_cubit.dart';
 import 'package:macrecovery_x/extensions/directory_extensions.dart';
+import 'package:macrecovery_x/features/localization/extensions/build_context.dart';
 import 'package:macrecovery_x/router/app_router.dart';
 import 'package:macrecovery_x/widgets/folder_item.dart';
 import 'package:macrecovery_x/widgets/loading_widget.dart';
@@ -44,19 +44,20 @@ class FolderPage extends StatelessWidget implements AutoRouteWrapper {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: BlocBuilder<FoldersCubit, FoldersState>(
-                builder: (context, state) => state.when(
-                  fetching: () => const LoadingWidget(),
-                  fetched: (directory, folders) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CurrentDirectory(
-                          directory.parents.reversed.toList(growable: false)),
-                      Expanded(
-                        child: FoldersTree(folders),
-                      )
-                    ],
-                  ),
-                ),
+                builder: (context, state) => switch (state) {
+                  FetchingFoldersState() => const LoadingWidget(),
+                  FetchedFoldersState(:final directory, :final folders) =>
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CurrentDirectory(
+                            directory.parents.reversed.toList(growable: false)),
+                        Expanded(
+                          child: FoldersTree(folders),
+                        )
+                      ],
+                    ),
+                },
               ),
             ),
           ),
@@ -69,8 +70,7 @@ class FolderPage extends StatelessWidget implements AutoRouteWrapper {
                     context.router.navigate(OSRoute());
                     context.read<StepCubit>().prev();
                   },
-                  child: Text(AppLocalizations.of(context)?.action_prev ??
-                      'action_prev'),
+                  child: Text(context.l10n?.action_prev ?? 'action_prev'),
                 ),
                 ElevatedButton(
                   onPressed: selectedDirectory != null
@@ -87,9 +87,8 @@ class FolderPage extends StatelessWidget implements AutoRouteWrapper {
                           context.read<StepCubit>().next();
                         }
                       : null,
-                  child: Text(
-                      AppLocalizations.of(context)?.action_use_this_folder ??
-                          'action_use_this_folder'),
+                  child: Text(context.l10n?.action_use_this_folder ??
+                      'action_use_this_folder'),
                 ),
               ],
             ),

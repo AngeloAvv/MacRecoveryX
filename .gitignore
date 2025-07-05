@@ -46,6 +46,7 @@ app.*.map.json
 /android/app/release
 
 # Flutter generated files
+**/app_localizations*.dart
 *.gr.dart
 *.g.dart
 *.freezed.dart

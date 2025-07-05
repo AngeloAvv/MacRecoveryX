@@ -31,33 +31,37 @@ class DownloadPage extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) =>
       BlocConsumer<DownloadCubit, DownloadState>(
-        listener: (context, state) => state.whenOrNull(downloaded: (directory) {
-          context.read<StepCubit>().next();
-          context.router.navigate(FinishRoute(directory: directory));
-
-          return null;
-        }),
-        builder: (context, state) => state.maybeWhen(
-          downloading: (progress) => Center(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Text(
-                  '${min(progress * 100, 100).toInt()} %',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                SizedBox(
-                  width: 256,
-                  height: 256,
-                  child: CircularProgressIndicator(
-                    value: progress,
-                    strokeWidth: 30,
+        listener: (context, state) => switch (state) {
+          DownloadedState(:final directory) =>
+            _onDownloaded(context, directory: directory),
+          _ => null,
+        },
+        builder: (context, state) => switch (state) {
+          DownloadingState(:final progress) => Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Text(
+                    '${min(progress * 100, 100).toInt()} %',
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: 256,
+                    height: 256,
+                    child: CircularProgressIndicator(
+                      value: progress,
+                      strokeWidth: 30,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          orElse: () => const SizedBox(),
-        ),
+          _ => const SizedBox(),
+        },
       );
+
+  void _onDownloaded(BuildContext context, {required Directory directory}) {
+    context.read<StepCubit>().next();
+    context.router.navigate(FinishRoute(directory: directory));
+  }
 }

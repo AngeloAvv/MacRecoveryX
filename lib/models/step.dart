@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:macrecovery_x/features/localization/extensions/build_context.dart';
 
 enum Step {
   welcome,
@@ -16,15 +16,15 @@ extension LocalizedStep on Step {
   String? label(BuildContext context) {
     switch (index) {
       case 0:
-        return AppLocalizations.of(context)?.step_one;
+        return context.l10n?.step_one;
       case 1:
-        return AppLocalizations.of(context)?.step_two;
+        return context.l10n?.step_two;
       case 2:
-        return AppLocalizations.of(context)?.step_three;
+        return context.l10n?.step_three;
       case 3:
-        return AppLocalizations.of(context)?.step_four;
+        return context.l10n?.step_four;
       case 4:
-        return AppLocalizations.of(context)?.step_five;
+        return context.l10n?.step_five;
     }
     return null;
   }
