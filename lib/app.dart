@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/di/dependency_injector.dart';
+import 'package:macrecovery_x/features/localization/app_localizations.dart';
 import 'package:macrecovery_x/misc/custom_scroll_behavior.dart';
 import 'package:macrecovery_x/router/app_router.dart';
 

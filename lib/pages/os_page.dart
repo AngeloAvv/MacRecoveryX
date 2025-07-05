@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:macrecovery_x/cubits/os_cubit.dart';
 import 'package:macrecovery_x/cubits/step_cubit.dart';
+import 'package:macrecovery_x/features/localization/extensions/build_context.dart';
 import 'package:macrecovery_x/models/os.dart';
 import 'package:macrecovery_x/router/app_router.dart';
 import 'package:macrecovery_x/widgets/os_item.dart';
@@ -35,7 +35,7 @@ class OSPage extends StatelessWidget implements AutoRouteWrapper {
                     context.router.navigate(const WelcomeRoute());
                     context.read<StepCubit>().prev();
                   },
-                  child: Text(AppLocalizations.of(context)?.action_prev ?? 'action_prev'),
+                  child: Text(context.l10n?.action_prev ?? 'action_prev'),
                 ),
                 ElevatedButton(
                   onPressed: selectedOS != null
@@ -44,7 +44,7 @@ class OSPage extends StatelessWidget implements AutoRouteWrapper {
                           context.read<StepCubit>().next();
                         }
                       : null,
-                  child: Text(AppLocalizations.of(context)?.action_next ?? 'action_next'),
+                  child: Text(context.l10n?.action_next ?? 'action_next'),
                 ),
               ],
             ),
