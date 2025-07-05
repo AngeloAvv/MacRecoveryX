@@ -44,19 +44,20 @@ class FolderPage extends StatelessWidget implements AutoRouteWrapper {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: BlocBuilder<FoldersCubit, FoldersState>(
-                builder: (context, state) => state.when(
-                  fetching: () => const LoadingWidget(),
-                  fetched: (directory, folders) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CurrentDirectory(
-                          directory.parents.reversed.toList(growable: false)),
-                      Expanded(
-                        child: FoldersTree(folders),
-                      )
-                    ],
-                  ),
-                ),
+                builder: (context, state) => switch (state) {
+                  FetchingFoldersState() => const LoadingWidget(),
+                  FetchedFoldersState(:final directory, :final folders) =>
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CurrentDirectory(
+                            directory.parents.reversed.toList(growable: false)),
+                        Expanded(
+                          child: FoldersTree(folders),
+                        )
+                      ],
+                    ),
+                },
               ),
             ),
           ),
