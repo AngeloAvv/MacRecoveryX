@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'os.freezed.dart';
 
 @freezed
-class OS with _$OS {
+abstract class OS with _$OS {
   static const values = [
     OS.lion,
     OS.mountainLion,

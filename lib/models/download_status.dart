@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'download_status.freezed.dart';
 
 @freezed
-class DownloadStatus with _$DownloadStatus {
+abstract class DownloadStatus with _$DownloadStatus {
   const factory DownloadStatus({
     required double progress,
     required File file,
