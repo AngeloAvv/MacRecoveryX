@@ -19,7 +19,7 @@ jobs:
           find: '/'
           replace: '-'
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: ${{ inputs.platform }}-artifacts
       - name: Archive Artifacts
