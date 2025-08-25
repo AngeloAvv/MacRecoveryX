@@ -131,7 +131,7 @@ os=default
     return await Client().send(request);
   }
 
-  String _generateId(length) => List.generate(
+  String _generateId(int length) => List.generate(
         length,
         (index) => _validChars[Random().nextInt(_validChars.length)],
       ).join();
