@@ -12,10 +12,16 @@ jobs:
     runs-on: ${{ inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'windows' && 'windows-latest' || inputs.platform == 'macos' && 'macos-latest' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install dependencies
         if: ${{ inputs.platform == 'linux' }}
-        run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-0 libgtk-3-dev libblkid1 liblzma5
+        run: |
+          sudo apt-get update -y 
+          sudo apt-get install \
+            clang cmake git \
+            ninja-build pkg-config \
+            libgtk-3-dev liblzma-dev \
+            libstdc++-12-dev
       - name: Setup Flutter
         uses: ./.github/actions/setup
       - name: Build Artifacts
