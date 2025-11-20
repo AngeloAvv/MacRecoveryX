@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ inputs.platform == 'linux' && 'ubuntu-latest' || inputs.platform == 'windows' && 'windows-latest' || inputs.platform == 'macos' && 'macos-latest' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install dependencies
         if: ${{ inputs.platform == 'linux' }}
         run: |
