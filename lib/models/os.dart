@@ -19,6 +19,7 @@ abstract class OS with _$OS {
     OS.ventura,
     OS.sonoma,
     OS.sequoia,
+    OS.tahoe,
   ];
 
   const factory OS({
@@ -27,6 +28,7 @@ abstract class OS with _$OS {
     required String avatar,
     required String boardId,
     required String mlb,
+    @Default('default') String type,
   }) = _OS;
 
   factory OS.lion() => const OS(
@@ -40,7 +42,7 @@ abstract class OS with _$OS {
   factory OS.mountainLion() => const OS(
         name: 'Mountain Lion',
         version: '10.8',
-        avatar: 'assets/os/mountain_lion.png',
+        avatar: 'assets/os/mountain_lion.webp',
         boardId: 'Mac-7DF2A3B5E5D671ED',
         mlb: '00000000000F65100',
       );
@@ -56,7 +58,7 @@ abstract class OS with _$OS {
   factory OS.yosemite() => const OS(
         name: 'Yosemite',
         version: '10.10',
-        avatar: 'assets/os/yosemite.png',
+        avatar: 'assets/os/yosemite.webp',
         boardId: 'Mac-E43C1C25D4880AD6',
         mlb: '00000000000GDVW00',
       );
@@ -105,7 +107,7 @@ abstract class OS with _$OS {
         name: 'Big Sur',
         version: '11',
         avatar: 'assets/os/big_sur.jpg',
-        boardId: 'Mac-42FD25EABCABB274',
+        boardId: 'Mac-2BD1B31983FE1663',
         mlb: '00000000000000000',
       );
 
@@ -113,16 +115,18 @@ abstract class OS with _$OS {
         name: 'Monterey',
         version: '12',
         avatar: 'assets/os/monterey.jpg',
-        boardId: 'Mac-E43C1C25D4880AD6',
+        boardId: 'Mac-B809C3757DA9BB8D',
         mlb: '00000000000000000',
+        type: 'latest',
       );
 
   factory OS.ventura() => const OS(
         name: 'Ventura',
         version: '13',
         avatar: 'assets/os/ventura.jpg',
-        boardId: 'Mac-B4831CEBD52A0C4C',
+        boardId: 'Mac-4B682C642B45593E',
         mlb: '00000000000000000',
+        type: 'latest',
       );
 
   factory OS.sonoma() => const OS(
@@ -136,8 +140,17 @@ abstract class OS with _$OS {
   factory OS.sequoia() => const OS(
         name: 'Sequoia',
         version: '15',
-        avatar: 'assets/os/sequoia.png',
+        avatar: 'assets/os/sequoia.webp',
         boardId: 'Mac-7BA5B2D9E42DDD94',
         mlb: '00000000000000000',
+      );
+
+  factory OS.tahoe() => const OS(
+        name: 'Tahoe',
+        version: '26',
+        avatar: 'assets/os/tahoe.jpg',
+        boardId: 'Mac-CFF7D910A743CAAF',
+        mlb: '00000000000000000',
+        type: 'latest',
       );
 }

@@ -23,6 +23,7 @@ class RecoveryRepository {
         mlb: os.mlb,
         boardId: os.boardId,
         session: session,
+        type: os.type,
       );
 
   Stream<DownloadStatus> saveFile(

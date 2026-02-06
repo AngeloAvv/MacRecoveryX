@@ -65,6 +65,7 @@ class RecoveryService {
     required String mlb,
     required String boardId,
     required String session,
+    required String type,
   }) async {
     final response = await Client().post(
       Uri.parse(
@@ -83,7 +84,7 @@ sn=$mlb
 bid=$boardId
 k=${_generateId(_typeK)}
 fg=${_generateId(_typeFg)},
-os=default
+os=$type
 ''',
       ),
     );
