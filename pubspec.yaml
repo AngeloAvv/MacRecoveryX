@@ -1,7 +1,7 @@
 name: macrecovery_x
 description: A tool to retrieve a genuine recovery image to recover your Mac.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 0.4.0+1
+version: 0.5.0+1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
