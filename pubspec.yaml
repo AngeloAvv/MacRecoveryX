@@ -34,9 +34,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/os/lion.jpg
-    - assets/os/mountain_lion.png
+    - assets/os/mountain_lion.webp
     - assets/os/mavericks.jpg
-    - assets/os/yosemite.png
+    - assets/os/yosemite.webp
     - assets/os/el_capitan.jpg
     - assets/os/sierra.jpg
     - assets/os/high_sierra.jpg
@@ -46,4 +46,5 @@ flutter:
     - assets/os/monterey.jpg
     - assets/os/ventura.jpg
     - assets/os/sonoma.jpg
-    - assets/os/sequoia.png
+    - assets/os/sequoia.webp
+    - assets/os/tahoe.jpg
