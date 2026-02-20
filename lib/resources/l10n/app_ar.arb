@@ -1,0 +1,24 @@
+{
+  "action_prev": "السابق",
+  "action_next": "التالي",
+  "action_start_over": "ابدأ من جديد",
+  "action_use_this_folder": "استخدم هذا المجلد",
+  "label_welcome_title": "مرحبًا بك في MacRecoveryX",
+  "label_welcome_subtitle": "MacRecoveryX أداة لاسترجاع صورة الاسترداد الأصلية لاستعادة نظام macOS",
+  "label_welcome_call_to_action": "صُنعت بحب ❤️ بواسطة AngeloAvv",
+  "label_no_internet_title": "أوه لا!",
+  "label_no_internet_message": "تحتاج إلى اتصال بالإنترنت لاستخدام هذا البرنامج",
+  "label_finish_title": "اكتمل التثبيت!",
+  "label_finish_subtitle": "تم تنزيل صورة الاسترداد بنجاح! ملفاتك متوفرة في",
+  "label_step": "الخطوة {step} من 2",
+  "@label_step": {
+    "placeholders": {
+      "step": {}
+    }
+  },
+  "step_one": "الترحيب",
+  "step_two": "اختيار النظام",
+  "step_three": "وجهة الحفظ",
+  "step_four": "التنزيل",
+  "step_five": "الانتهاء"
+}
