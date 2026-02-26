@@ -28,7 +28,7 @@ jobs:
         working-directory: ${{ inputs.platform }}
         run: flutter build ${{ inputs.platform }} --release
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ inputs.platform }}-artifacts
           path: ${{ inputs.platform == 'linux' && 'build/linux/x64/release/bundle/' || inputs.platform == 'windows' && 'build/windows/x64/runner/Release/' || inputs.platform == 'macos' && 'build/macos/Build/Products/Release/' }}
