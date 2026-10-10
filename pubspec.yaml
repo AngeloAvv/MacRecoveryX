@@ -17,7 +17,7 @@ dependencies:
   freezed_annotation: ^3.0.0
   http: ^1.1.0
   path: ^1.8.3
-  path_provider: ^2.1.1
+  path_provider: ^2.1.2
   pine: ^1.0.2
   provider: ^6.0.5
   rxdart: ^0.28.0
