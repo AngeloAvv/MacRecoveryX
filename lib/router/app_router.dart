@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart' hide Route;
+import 'package:material_ui/material_ui.dart' hide Route;
 import 'package:macrecovery_x/models/os.dart';
 import 'package:macrecovery_x/pages/download_page.dart';
 import 'package:macrecovery_x/pages/finish_page.dart';

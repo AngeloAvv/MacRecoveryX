@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:macrecovery_x/di/dependency_injector.dart';
 import 'package:macrecovery_x/features/localization/app_localizations.dart';
 import 'package:macrecovery_x/misc/custom_scroll_behavior.dart';
