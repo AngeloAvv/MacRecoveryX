@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:macrecovery_x/features/localization/extensions/build_context.dart';
 
 enum Step {

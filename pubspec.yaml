@@ -13,9 +13,11 @@ dependencies:
   auto_route: 11.2.0
   collection: ^1.18.0
   connectivity_plus: ^7.0.0
+  cupertino_ui: ^1.1.5
   flutter_bloc: ^9.1.1
   freezed_annotation: ^3.1.0
   http: ^1.1.0
+  material_ui: ^1.9.0
   path: ^1.8.3
   path_provider: ^2.1.2
   pine: ^1.0.4

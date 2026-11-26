@@ -1,4 +1,4 @@
-synthetic-package: false
 arb-dir: lib/features/localization/resources
 template-arb-file: app_en.arb
 output-dir: lib/features/localization
+header: "// ignore_for_file: deprecated_member_use"
